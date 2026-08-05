@@ -1,5 +1,6 @@
 .section {
   padding: 6rem 1.5rem;
+  background: #ffffff;
 }
 
 .container {
@@ -7,138 +8,239 @@
   margin-inline: auto;
 }
 
-.headingRow {
+.heading {
+  margin-bottom: 4rem;
+  text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 2rem;
-  margin-bottom: 4rem;
-}
-
-.headingCopy {
-  max-width: 48rem;
+  align-items: center;
 }
 
 .eyebrow {
   margin: 0 0 1rem;
-  color: #737373;
+  color: #10b981;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
 .title {
+  max-width: 48rem;
   margin: 0;
-  font-size: 2rem;
+  font-size: 2.25rem;
   font-weight: 800;
   line-height: 1.2;
   letter-spacing: -0.03em;
+  color: #0f172a;
 }
 
-.list {
+/* --- Mac Window Shell --- */
+.macWindow {
+  background: #ffffff;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 
+    0 0 0 1px rgba(15, 23, 42, 0.06),
+    0 30px 60px -15px rgba(15, 23, 42, 0.12),
+    0 15px 30px -10px rgba(15, 23, 42, 0.04);
+}
+
+.macTitleBar {
+  height: 2.75rem;
+  background: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  padding: 0 1.25rem;
+  position: relative;
+}
+
+.macDots {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.macDotRed,
+.macDotYellow,
+.macDotGreen {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+}
+
+.macDotRed { background: #ff5f56; border: 1px solid #e0443e; }
+.macDotYellow { background: #ffbd2e; border: 1px solid #dea123; }
+.macDotGreen { background: #27c93f; border: 1px solid #1aab29; }
+
+.macTitle {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #64748b;
+  font-family: monospace;
+}
+
+/* --- Dashboard Layout Inside Window --- */
+.dashboardWrapper {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  background: #fafafa;
 }
 
-.card {
+.tabsContainer {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  border: 1px solid #e5e5e5;
-  border-radius: 1.5rem;
-  background: #fff;
-  padding: 2rem;
-  transition: all 150ms;
+  gap: 0.375rem;
+  background: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 1rem;
 }
 
-.card:hover {
-  border-color: #d4d4d4;
-  box-shadow: 0 10px 30px -10px rgb(0 0 0 / 0.05);
-}
-
-.cardTitle {
-  margin: 0 0 1rem;
-  font-size: 1.5rem;
+.sidebarLabel {
+  font-size: 0.7rem;
   font-weight: 800;
+  color: #94a3b8;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.75rem 0.5rem;
+}
+
+.tabButton {
+  position: relative;
+  text-align: left;
+  padding: 0.875rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #64748b;
+  transition: color 200ms ease;
+  z-index: 1;
+}
+
+.tabButton:hover {
+  color: #0f172a;
+}
+
+.activeTab {
+  color: #0f172a;
+}
+
+.activeIndicator {
+  position: absolute;
+  inset: 0;
+  background: #ffffff;
+  border-radius: 0.5rem;
+  z-index: -1;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0, 0, 0, 0.03);
+}
+
+.contentDisplay {
+  background: #ffffff;
+  padding: 2.5rem 1.5rem;
+  min-height: 380px;
+}
+
+.contentHeader {
+  margin-bottom: 2.5rem;
+}
+
+.contentTitle {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 0.75rem;
   letter-spacing: -0.02em;
 }
 
 .description {
+  font-size: 1.05rem;
+  color: #64748b;
+  line-height: 1.6;
+  max-width: 42rem;
   margin: 0;
-  color: #525252;
-  font-size: 1.125rem;
-  font-weight: 500;
-  line-height: 1.625;
 }
 
-.featuresColumn {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.features {
+.featuresGrid {
   display: grid;
-  gap: 1.25rem;
-  padding: 0;
-  margin: 0;
-  list-style: none;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.875rem;
+  margin-bottom: 2.5rem;
 }
 
-.featureItem {
+.featureModule {
   display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  color: #404040;
-}
-
-.checkWrap {
-  display: flex;
-  flex-shrink: 0;
   align-items: center;
-  justify-content: center;
-  width: 1.5rem;
-  height: 1.5rem;
-  margin-top: 0.125rem;
-  border: 1px solid #e5e5e5;
-  border-radius: 9999px;
-  background: #fcfcfc;
+  gap: 0.875rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 1rem 1.25rem;
+  border-radius: 0.5rem;
+  transition: all 200ms ease;
+}
+
+.featureModule:hover {
+  background: #ffffff;
+  border-color: #10b981;
+  box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.08);
+  transform: translateX(4px);
 }
 
 .checkIcon {
-  width: 0.875rem;
-  height: 0.875rem;
-  color: #f7931e;
+  color: #10b981;
+  flex-shrink: 0;
 }
 
 .featureText {
-  font-size: 1.125rem;
-  font-weight: 600;
+  font-weight: 700;
+  color: #334155;
+  font-size: 0.95rem;
 }
 
-@media (min-width: 640px) {
-  .features { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.learnMoreBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 800;
+  color: #0f172a;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding-bottom: 0.2rem;
+  border-bottom: 2px solid #0f172a;
+  transition: all 200ms ease;
+  background: transparent;
+}
+
+.learnMoreBtn:hover {
+  color: #f7931e;
+  border-color: #f7931e;
+  gap: 0.75rem;
 }
 
 @media (min-width: 768px) {
   .section { padding-block: 8rem; }
-  .headingRow {
-    flex-direction: row;
-    align-items: flex-end;
-    margin-bottom: 6rem;
-  }
   .title { font-size: 3rem; }
-  .card { padding: 3rem; }
-  .cardTitle { font-size: 2rem; }
+  .featuresGrid { grid-template-columns: repeat(2, 1fr); }
+  .contentDisplay { padding: 3.5rem; }
 }
 
 @media (min-width: 1024px) {
-  .card {
+  .dashboardWrapper {
     flex-direction: row;
-    gap: 4rem;
   }
-  .serviceCopy { width: 41.666667%; }
-  .featuresColumn { width: 58.333333%; }
+  .tabsContainer {
+    width: 280px;
+    flex-shrink: 0;
+    padding: 1.25rem;
+    border-bottom: none;
+    border-right: 1px solid #e2e8f0;
+  }
+  .contentDisplay {
+    flex: 1;
+    padding: 4rem;
+  }
 }

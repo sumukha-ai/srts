@@ -1,45 +1,52 @@
 .footer {
   border-top: 1px solid #1e293b;
-  background: #0f172a;
+  background: #0B1121; /* Matches your dark theme */
   color: #94a3b8;
-  padding: 4rem 1.5rem;
+  padding: 4rem 1.5rem 2.5rem;
 }
 
-.inner {
+.container {
+  max-width: 80rem;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- Top Tier --- */
+.topTier {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
-  max-width: 80rem;
-  margin-inline: auto;
+  margin-bottom: 3rem;
 }
 
 .brandBlock {
-  text-align: center;
+  display: flex;
+  align-items: center;
 }
 
 .logo {
   display: inline-flex;
   align-items: center;
-  margin-bottom: 0.75rem;
-  border-radius: 0.5rem;
-  background: #fff;
-  padding: 0.5rem;
+  text-decoration: none;
+  background: #ffffff; /* White background container to prevent camouflage */
+  padding: 0.6rem 1rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 200ms ease;
+}
+
+.logo:hover {
+  transform: translateY(-2px);
 }
 
 .logoImage {
   display: block;
-  width: min(12rem, 74vw);
+  width: min(10rem, 50vw); /* Perfectly controlled responsive sizing */
   height: auto;
-}
-
-.tagline {
-  margin: 0;
-  color: #cbd5e1;
-  font-size: 0.875rem;
-  font-weight: 600;
-  letter-spacing: 0.025em;
+  object-fit: contain;
 }
 
 .links {
@@ -47,45 +54,76 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 1.5rem;
-  font-size: 0.875rem;
+  gap: 2rem;
+  font-size: 0.9rem;
   font-weight: 600;
 }
 
-.link,
-.creditLink {
-  transition: color 150ms;
+.link {
+  color: #94a3b8;
+  text-decoration: none;
+  transition: color 200ms ease;
 }
 
-.link:hover,
-.creditLink:hover {
-  color: #fff;
+.link:hover {
+  color: #ffffff;
+}
+
+/* --- Divider --- */
+.divider {
+  width: 100%;
+  height: 1px;
+  background: #1e293b;
+  margin-bottom: 2rem;
+}
+
+/* --- Bottom Tier --- */
+.bottomTier {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #64748b;
 }
 
 .copyright {
-  color: #64748b;
-  font-size: 0.875rem;
-  font-weight: 500;
   text-align: center;
 }
 
-.desktopBreak {
-  display: none;
-}
-
-.builtWith {
-  display: inline-block;
+.credits {
+  text-align: center;
 }
 
 .creditLink {
   color: #94a3b8;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 200ms ease;
 }
 
+.creditLink:hover {
+  color: #f7931e; /* Matches your site's accent color */
+}
+
+/* --- Desktop Layout --- */
 @media (min-width: 768px) {
-  .inner { flex-direction: row; }
-  .brandBlock { text-align: left; }
-  .links { gap: 2.5rem; }
-  .copyright { text-align: right; }
-  .desktopBreak { display: block; }
-  .builtWith { margin-top: 0.25rem; }
+  .topTier {
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .bottomTier {
+    flex-direction: row;
+  }
+  
+  .copyright {
+    text-align: left;
+  }
+  
+  .credits {
+    text-align: right;
+  }
 }

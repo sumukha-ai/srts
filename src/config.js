@@ -2,18 +2,17 @@ import { Target, Briefcase, TrendingUp } from "lucide-react";
 
 export const config = {
   company: {
-    name: "shree rama talent solutions",
+    name: "Shree Rama Talent Solutions",
     tagline: "Hunt. Hire. Thrive.",
-    email: "sanath@ramatalent.com",
-    whatsapp: "+91 7259299386",
+    email: "founder@srts.com",
+    whatsapp: "+91 9999999999",
     linkedinRama: "https://linkedin.com/company/shree-rama-talent-solutions",
-    linkedinSumukha: "https://linkedin.com/company/sumukha-ai"
+    linkedinSumukha: "https://sumukha.ai"
   },
   metrics: [
     { value: 120, suffix: "+", label: "Positions Closed" },
     { value: 35, suffix: "", label: "Hiring Partners" },
     { value: 15, suffix: "k", label: "Candidate Network" },
-    { value: 7, suffix: " Days", label: "Avg. Shortlist Time" },
     { value: 82, suffix: "%", label: "Offer-to-Join" },
     { value: 68, suffix: "%", label: "Repeat Clients" },
   ],

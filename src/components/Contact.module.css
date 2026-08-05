@@ -1,151 +1,224 @@
 .section {
-  background: #0f172a;
-  color: #fff;
+  background: #020617;
+  color: #ffffff;
   padding: 6rem 1.5rem;
+  border-radius: 2.5rem;
+  margin: 1rem;
 }
 
 .container {
-  max-width: 64rem;
+  max-width: 80rem;
   margin-inline: auto;
+}
+
+/* --- Full-Width Banner matching "Why Us" --- */
+.bannerBox {
+  position: relative;
+  background: #0B1121;
+  border: 1px solid #1e293b;
+  border-radius: 2rem;
+  padding: 4rem 2rem;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  transition: border-color 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bannerBox:hover {
+  border-color: #334155;
+}
+
+/* Subtle background radial glow */
+.bannerGlow {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(
+    circle,
+    rgba(247, 147, 30, 0.06),
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.contentWrapper {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
 }
 
+.headingGroup {
+  max-width: 48rem;
+  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* TVA Retro Badge */
+.tvaBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(247, 147, 30, 0.1);
+  border: 1px solid rgba(247, 147, 30, 0.2);
+  padding: 0.35rem 0.875rem;
+  border-radius: 9999px;
+  font-family: monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #f7931e;
+  margin-bottom: 1.25rem;
+  letter-spacing: 0.05em;
+}
+
+.tvaDot {
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  background: #f7931e;
+  animation: pulse 1.5s infinite;
+}
+
 .title {
-  margin: 0 0 1.5rem;
+  color: #ffffff;
   font-size: 2.25rem;
   font-weight: 800;
-  line-height: 1.2;
   letter-spacing: -0.03em;
+  margin: 0 0 1rem;
 }
 
 .description {
-  max-width: 42rem;
-  margin: 0 auto 4rem;
   color: #94a3b8;
-  font-size: 1.25rem;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  margin: 0;
   font-weight: 500;
 }
 
 .actions {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 1.5rem;
+  gap: 1.25rem;
+  width: 100%;
+  max-width: 48rem;
 }
 
-.emailCard,
-.whatsappCard {
+.actionCard {
+  background: #020617;
+  border: 1px solid #1e293b;
+  border-radius: 1.25rem;
+  padding: 1.5rem 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1.5rem;
-  border-radius: 1.5rem;
-  padding: 1.5rem 2rem;
-  transition: all 150ms;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.emailCard:hover,
-.whatsappCard:hover {
-  transform: translateY(-4px);
-}
-
-.emailCard {
-  background: #fff;
-  color: #171717;
-}
-
-.emailCard:hover {
-  box-shadow: 0 20px 25px -5px rgb(255 255 255 / 0.1);
-}
-
-.whatsappCard {
-  border: 1px solid #334155;
-  background: #1e293b;
-  color: #fff;
-}
-
-.whatsappCard:hover {
-  background: #334155;
+.actionCard:hover {
+  border-color: #f7931e;
+  transform: translateY(-3px);
+  box-shadow: 0 20px 40px -15px rgba(247, 147, 30, 0.15);
 }
 
 .cardContent {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.25rem;
+  text-align: left;
 }
 
 .emailIconWrap,
 .whatsappIconWrap {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.875rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 9999px;
+  flex-shrink: 0;
 }
 
 .emailIconWrap {
-  background: #f5f5f5;
+  background: rgba(247, 147, 30, 0.1);
+  border: 1px solid rgba(247, 147, 30, 0.2);
+  color: #f7931e;
 }
 
 .whatsappIconWrap {
-  background: #0f172a;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  color: #10b981;
 }
-
-.emailIcon,
-.whatsappIcon {
-  width: 1.25rem;
-  height: 1.25rem;
-}
-
-.emailIcon { color: #171717; }
-.whatsappIcon { color: #fff; }
 
 .cardText {
-  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
 }
 
-.emailLabel,
-.whatsappLabel {
-  margin-bottom: 0.25rem;
-  font-size: 0.75rem;
+.cardType {
+  font-family: monospace;
+  font-size: 0.7rem;
+  color: #64748b;
+  letter-spacing: 0.05em;
   font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
 }
-
-.emailLabel { color: #737373; }
-.whatsappLabel { color: #94a3b8; }
 
 .cardValue {
-  font-size: 1.125rem;
+  font-size: 1.05rem;
   font-weight: 700;
+  color: #f8fafc;
 }
 
-.emailArrow,
-.whatsappArrow {
-  width: 1.5rem;
-  height: 1.5rem;
-  transition: all 150ms;
+.arrowWrap {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: #1e293b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+  transition: all 300ms ease;
 }
 
-.emailArrow { color: #d4d4d4; }
-.emailCard:hover .emailArrow {
-  color: #171717;
-  transform: translateX(0.25rem);
+.actionCard:hover .arrowWrap {
+  background: #f7931e;
+  color: #020617;
+  transform: translateX(4px);
 }
 
-.whatsappArrow { color: #525252; }
-.whatsappCard:hover .whatsappArrow {
-  color: #fff;
-  transform: translateX(0.25rem);
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
 }
 
 @media (min-width: 640px) {
-  .actions { flex-direction: row; }
+  .actions {
+    flex-direction: row;
+  }
+  .actionCard {
+    flex: 1;
+  }
 }
 
 @media (min-width: 768px) {
-  .section { padding-block: 8rem; }
-  .title { font-size: 3.5rem; }
+  .section {
+    padding-block: 8rem;
+    margin: 1.5rem;
+  }
+  
+  .bannerBox {
+    padding: 5rem 4rem;
+  }
+
+  .title {
+    font-size: 3rem;
+  }
 }

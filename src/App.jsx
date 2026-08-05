@@ -9,6 +9,7 @@ import { Metrics } from "./components/Metrics";
 import { Philosophy } from "./components/Philosophy";
 import { WhyUs } from "./components/WhyUs";
 import { Services } from "./components/Services";
+import { Services2 } from "./components/Services2"; // New Accordion-style Services component
 import { Clients } from "./components/Clients";
 import { Process } from "./components/Process";
 import { Contact } from "./components/Contact";
@@ -25,6 +26,7 @@ export default function App() {
         <Philosophy />
         <WhyUs />
         <Services />
+        <Services2 /> {/* New Accordion-style Services component */}
         <Clients />
         <Process />
         <Contact />

@@ -1,5 +1,6 @@
 .section {
   padding: 6rem 1.5rem;
+  background: #ffffff;
 }
 
 .container {
@@ -7,87 +8,177 @@
   margin-inline: auto;
 }
 
-.heading {
-  max-width: 48rem;
-  margin-bottom: 5rem;
+/* --- Split Layout --- */
+.splitWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+/* --- Left Column (Sticky Header) --- */
+.stickyHeaderCol {
+  width: 100%;
+}
+
+.stickyContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* TVA Retro Badge */
+.tvaBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #fff7ed;
+  border: 1px solid #ffedd5;
+  padding: 0.35rem 0.875rem;
+  border-radius: 9999px;
+  font-family: monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #c2410c;
+  margin-bottom: 1.25rem;
+  letter-spacing: 0.05em;
+}
+
+.tvaDot {
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  background: #f97316;
+  animation: pulse 1.5s infinite;
 }
 
 .eyebrow {
-  margin: 0 0 1rem;
-  color: #737373;
+  margin: 0 0 0.75rem;
+  color: #10b981;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
 .title {
-  margin: 0;
-  font-size: 2rem;
+  margin: 0 0 1rem;
+  font-size: 2.25rem;
   font-weight: 800;
   line-height: 1.2;
   letter-spacing: -0.03em;
+  color: #0f172a;
 }
 
-.grid {
-  position: relative;
-  display: grid;
-  gap: 3rem;
+.subtitle {
+  margin: 0;
+  color: #64748b;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  font-weight: 500;
 }
 
-.line {
-  display: none;
-}
-
-.step {
-  position: relative;
+/* --- Right Column (Scrolling Cards) --- */
+.stepsCol {
   display: flex;
   flex-direction: column;
+  gap: 1.5rem;
 }
 
-.number {
+.stepCard {
+  position: relative;
+  background: #090d16; /* Deep TVA Slate */
+  border: 1px solid #1e293b;
+  border-radius: 1.25rem;
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  overflow: hidden;
+  transition: border-color 300ms ease, transform 300ms ease, box-shadow 300ms ease;
+}
+
+.cardAccent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: #334155;
+  transition: background 300ms ease;
+}
+
+.stepCard:hover {
+  border-color: #f97316; /* TVA Orange highlight */
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -15px rgba(249, 115, 22, 0.15);
+}
+
+.stepCard:hover .cardAccent {
+  background: #f97316;
+  box-shadow: 0 0 12px rgba(249, 115, 22, 0.8);
+}
+
+.cardHeader {
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 3rem;
-  height: 3rem;
-  margin-bottom: 1.5rem;
-  border: 1px solid #d4d4d4;
-  border-radius: 9999px;
-  background: #fff;
-  color: #171717;
-  font-size: 1.125rem;
+  gap: 1rem;
+}
+
+.stepNum {
+  font-family: monospace;
+  font-size: 0.875rem;
   font-weight: 800;
+  color: #f97316;
+  background: rgba(249, 115, 22, 0.1);
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
 }
 
 .stepTitle {
-  margin: 0 0 1rem;
+  color: #ffffff;
   font-size: 1.5rem;
   font-weight: 800;
   letter-spacing: -0.02em;
-}
-
-.description {
   margin: 0;
-  color: #525252;
-  font-weight: 500;
-  line-height: 1.625;
 }
 
-@media (min-width: 768px) {
-  .section { padding-block: 8rem; }
-  .heading { margin-bottom: 6rem; }
-  .title { font-size: 3rem; }
-  .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.stepDescription {
+  color: #94a3b8;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+  font-weight: 500;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* --- Desktop Sticky Layout --- */
+@media (min-width: 1024px) {
+  .section { 
+    padding-block: 10rem; 
+  }
   
-  .line {
-    position: absolute;
-    top: 1.5rem;
-    right: 3rem;
-    left: 3rem;
-    z-index: -10;
-    display: block;
-    height: 1px;
-    background: #e5e5e5;
+  .splitWrapper {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 6rem;
+  }
+
+  .stickyHeaderCol {
+    width: 42%;
+    position: sticky;
+    top: 8rem; /* Pins the header nicely as you scroll past */
+  }
+
+  .stepsCol {
+    width: 58%;
+    gap: 2rem;
+  }
+
+  .title { 
+    font-size: 3rem; 
   }
 }

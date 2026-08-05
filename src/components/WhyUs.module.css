@@ -13,7 +13,11 @@
 
 .heading {
   max-width: 48rem;
-  margin-bottom: 4rem;
+  margin: 0 auto 4rem; /* Centers the block itself */
+  text-align: center;  /* Centers the text inside */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .eyebrow {

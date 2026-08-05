@@ -1,63 +1,128 @@
 .section {
-  border-block: 1px solid #e5e5e5;
-  background: #fff;
-  padding-block: 4rem;
+  padding: 2rem 1.5rem;
+  background: #ffffff;
 }
 
 .container {
   max-width: 80rem;
   margin-inline: auto;
-  padding-inline: 1.5rem;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  column-gap: 2rem;
-  row-gap: 3rem;
-}
-
-.metric {
+/* --- Horizontal Impact Bar --- */
+.impactBar {
+  background: #090d16; /* Deep TVA Slate */
+  border: 1px solid #1e293b;
+  border-radius: 1.5rem;
+  padding: 2.5rem 3rem;
   display: flex;
   flex-direction: column;
+  gap: 2.5rem;
+  box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.25), 0 0 30px rgba(249, 115, 22, 0.03);
 }
 
-.mobileDivider {
-  border-left: 1px solid #e5e5e5;
-  padding-left: 1.5rem;
+.leftContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
 }
 
-.value {
-  margin-bottom: 0.5rem;
-  font-size: 2rem;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: 1;
-}
-
-.label {
-  color: #737373;
-  font-size: 0.75rem;
+/* TVA Retro Badge */
+.tvaBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(249, 115, 22, 0.1);
+  border: 1px solid rgba(249, 115, 22, 0.2);
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-family: monospace;
+  font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  color: #f97316;
+  letter-spacing: 0.05em;
 }
 
-@media (min-width: 768px) {
-  .section {
-    padding-block: 6rem;
-  }
-  .value {
-    font-size: 3.5rem;
-  }
+.tvaDot {
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 50%;
+  background: #f97316;
+  animation: pulse 1.5s infinite;
 }
 
+.barTitle {
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.statValue {
+  font-family: monospace;
+  font-size: 2.25rem;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: -0.03em;
+  background: linear-gradient(180deg, #ffffff 0%, #94a3b8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.statLabel {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* --- Desktop Horizontal Layout (Minimal Vertical Height) --- */
 @media (min-width: 1024px) {
-  .grid {
-    grid-template-columns: repeat(6, minmax(0, 1fr));
+  .impactBar {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3rem 4rem;
   }
-  .desktopDivider {
-    border-left: 1px solid #e5e5e5;
-    padding-left: 1.5rem;
+
+  .leftContent {
+    flex-shrink: 0;
+    max-width: 240px;
+  }
+
+  .barTitle {
+    font-size: 1.875rem;
+  }
+
+  .statsGrid {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 4rem;
+    flex: 1;
+    border-left: 1px solid #1e293b;
+    padding-left: 4rem;
+  }
+
+  .statValue {
+    font-size: 3rem;
   }
 }
