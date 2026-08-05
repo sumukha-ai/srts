@@ -1,0 +1,2349 @@
+This file is a merged representation of a subset of the codebase, containing files not matching ignore patterns, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of a subset of the repository's contents that is considered the most important context.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching these patterns are excluded: node_modules, dist, .git, .vite, coverage, .cache, .idea, .vscode, *.log, .env, .env.*, package-lock.json
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+src/
+  assets/
+    srtsnb.png
+  components/
+    Clients.jsx
+    Clients.module.css
+    Contact.jsx
+    Contact.module.css
+    Footer.jsx
+    Footer.module.css
+    Header.jsx
+    Header.module.css
+    Hero.jsx
+    Hero.module.css
+    Metrics.jsx
+    Metrics.module.css
+    Philosophy.jsx
+    Philosophy.module.css
+    Process.jsx
+    Process.module.css
+    Services.jsx
+    Services.module.css
+    WhyUs.jsx
+    WhyUs.module.css
+  App.jsx
+  App.module.css
+  config.js
+  index.css
+  main.jsx
+.gitignore
+index.html
+metadata.json
+package.json
+README.md
+vite.config.js
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path="src/components/Clients.jsx">
+import { config } from '../config';
+import styles from "./Clients.module.css";
+
+export function Clients() {
+  return (
+    <section id="clients" className={styles.section}>
+      <div className={styles.header}>
+        <h2 className={styles.eyebrow}>Trusted by Teams We Support</h2>
+      </div>
+      
+      {/* Container with fade edges */}
+      <div className={styles.marqueeWrap}>
+        <div className={styles.fadeLeft} />
+        <div className={styles.fadeRight} />
+        
+        <div className={styles.marquee}>
+          {/* First set */}
+          <div className={styles.logoSet}>
+            {config.clients.map((client, idx) => (
+              <div key={`client-1-${idx}`} className={styles.clientCard}>
+                <span className={styles.clientName}>{client.name}</span>
+              </div>
+            ))}
+          </div>
+          {/* Duplicate set for seamless loop */}
+          <div className={styles.logoSet}>
+            {config.clients.map((client, idx) => (
+              <div key={`client-2-${idx}`} className={styles.clientCard}>
+                <span className={styles.clientName}>{client.name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+</file>
+
+<file path="src/components/Clients.module.css">
+.section {
+  overflow: hidden;
+  border-block: 1px solid #e5e5e5;
+  background: #fff;
+  padding-block: 6rem;
+}
+
+.header {
+  max-width: 80rem;
+  margin: 0 auto 4rem;
+  padding-inline: 1.5rem;
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0;
+  color: #737373;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.marqueeWrap {
+  position: relative;
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  padding-block: 1rem;
+}
+
+.fadeLeft,
+.fadeRight {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 10;
+  width: 8rem;
+  pointer-events: none;
+}
+
+.fadeLeft {
+  left: 0;
+  background: linear-gradient(to right, #fff, transparent);
+}
+
+.fadeRight {
+  right: 0;
+  background: linear-gradient(to left, #fff, transparent);
+}
+
+
+.marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 40s linear infinite;
+}
+
+.marqueeWrap:hover .marquee {
+  animation-play-state: paused;
+}
+
+.logoSet {
+  display: flex;
+}
+
+.clientCard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 14rem;
+  height: 6rem;
+  margin-inline: 1rem;
+  border: 1px solid #e5e5e5;
+  border-radius: 1rem;
+  background: #fff;
+  opacity: 0.6;
+  filter: grayscale(100%);
+  cursor: default;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  transition: all 300ms;
+}
+
+.clientCard:hover {
+  opacity: 1;
+  filter: grayscale(0);
+}
+
+.clientName {
+  color: #737373;
+  font-family: "Playfair Display", serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+</file>
+
+<file path="src/components/Contact.jsx">
+import { motion } from 'motion/react';
+import { Mail, MessageCircle, ArrowRight } from 'lucide-react';
+import { config } from '../config';
+import styles from "./Contact.module.css";
+
+export function Contact() {
+  return (
+    <section id="contact" className={styles.section}>
+      <div className={styles.container}>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className={styles.title}>Ready to scale your team?</h2>
+          <p className={styles.description}>Let's discuss how {config.company.name} can accelerate your hiring and secure the talent you need to thrive.</p>
+          
+          <div className={styles.actions}>
+            <a 
+              href={`mailto:${config.company.email}`}
+              className={styles.emailCard}
+            >
+              <div className={styles.cardContent}>
+                <div className={styles.emailIconWrap}>
+                  <Mail className={styles.emailIcon} />
+                </div>
+                <div className={styles.cardText}>
+                  <div className={styles.emailLabel}>Email Us</div>
+                  <div className={styles.cardValue}>{config.company.email}</div>
+                </div>
+              </div>
+              <ArrowRight className={styles.emailArrow} />
+            </a>
+            
+            <a 
+              href={`https://wa.me/${config.company.whatsapp.replace(/\+/g, '')}`}
+              target="_blank" rel="noopener noreferrer"
+              className={styles.whatsappCard}
+            >
+              <div className={styles.cardContent}>
+                <div className={styles.whatsappIconWrap}>
+                  <MessageCircle className={styles.whatsappIcon} />
+                </div>
+                <div className={styles.cardText}>
+                  <div className={styles.whatsappLabel}>WhatsApp</div>
+                  <div className={styles.cardValue}>{config.company.whatsapp}</div>
+                </div>
+              </div>
+              <ArrowRight className={styles.whatsappArrow} />
+            </a>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+</file>
+
+<file path="src/components/Contact.module.css">
+.section {
+  margin: 3rem 0.5rem 0;
+  border-radius: 3rem 3rem 0 0;
+  background: #0f172a;
+  color: #fff;
+  padding: 6rem 1.5rem;
+}
+
+.container {
+  max-width: 64rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.title {
+  margin: 0 0 1.5rem;
+  font-family: "Playfair Display", serif;
+  font-size: 2.25rem;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.description {
+  max-width: 42rem;
+  margin: 0 auto 4rem;
+  color: #a3a3a3;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.emailCard,
+.whatsappCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  border-radius: 1.5rem;
+  padding: 1.5rem 2rem;
+  transition: all 150ms;
+}
+
+.emailCard:hover,
+.whatsappCard:hover {
+  transform: scale(1.02);
+}
+
+.emailCard {
+  background: #fff;
+  color: #171717;
+}
+
+.emailCard:hover {
+  background: #f5f5f5;
+}
+
+.whatsappCard {
+  border: 1px solid #334155;
+  background: #1e293b;
+  color: #fff;
+}
+
+.whatsappCard:hover {
+  background: #334155;
+}
+
+.cardContent {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.emailIconWrap,
+.whatsappIconWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 9999px;
+}
+
+.emailIconWrap {
+  background: #f5f5f5;
+}
+
+.whatsappIconWrap {
+  background: #334155;
+}
+
+.emailIcon,
+.whatsappIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.emailIcon {
+  color: #171717;
+}
+
+.whatsappIcon {
+  color: #fff;
+}
+
+.cardText {
+  text-align: left;
+}
+
+.emailLabel,
+.whatsappLabel {
+  margin-bottom: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.emailLabel {
+  color: #737373;
+}
+
+.whatsappLabel {
+  color: #a3a3a3;
+}
+
+.cardValue {
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+.emailArrow,
+.whatsappArrow {
+  width: 1.5rem;
+  height: 1.5rem;
+  transition: all 150ms;
+}
+
+.emailArrow {
+  color: #d4d4d4;
+}
+
+.emailCard:hover .emailArrow {
+  color: #171717;
+  transform: translateX(0.25rem);
+}
+
+.whatsappArrow {
+  color: #525252;
+}
+
+.whatsappCard:hover .whatsappArrow {
+  color: #fff;
+  transform: translateX(0.25rem);
+}
+
+@media (min-width: 640px) {
+  .actions {
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 768px) {
+  .section {
+    margin-inline: 1.5rem;
+    padding-block: 8rem;
+  }
+
+  .title {
+    font-size: 3.75rem;
+  }
+}
+</file>
+
+<file path="src/components/Footer.jsx">
+import { config } from '../config';
+import logoSrc from '../assets/srtsnb.png';
+import styles from "./Footer.module.css";
+
+export function Footer() {
+  return (
+    <footer className={styles.footer}>
+      <div className={styles.inner}>
+        <div className={styles.brandBlock}>
+          <a href="#" className={styles.logo} aria-label={config.company.name}>
+            <img src={logoSrc} alt={config.company.name} className={styles.logoImage} />
+          </a>
+          <p className={styles.tagline}>{config.company.tagline}</p>
+        </div>
+        
+        <div className={styles.links}>
+          <a href={config.company.linkedinRama} target="_blank" rel="noopener noreferrer" className={styles.link}>LinkedIn</a>
+          <a href={`mailto:${config.company.email}`} className={styles.link}>Email</a>
+          <a href="#philosophy" className={styles.link}>Philosophy</a>
+          <a href="#services" className={styles.link}>Services</a>
+        </div>
+        
+        <div className={styles.copyright}>
+          &copy; {new Date().getFullYear()} {config.company.name}.<br className={styles.desktopBreak} />
+          <span className={styles.builtWith}> Built with <a href={config.company.linkedinSumukha} target="_blank" rel="noopener noreferrer" className={styles.creditLink}>Sumukha.AI</a></span>
+        </div>
+      </div>
+    </footer>
+  );
+}
+</file>
+
+<file path="src/components/Footer.module.css">
+.footer {
+  margin: 0 0.5rem 1.5rem;
+  border-top: 1px solid #0f172a;
+  border-radius: 0 0 3rem 3rem;
+  background: #020617;
+  color: #a3a3a3;
+  padding: 4rem 1.5rem;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  max-width: 80rem;
+  margin-inline: auto;
+}
+
+.brandBlock {
+  text-align: center;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  border-radius: 0.5rem;
+  background: #fff;
+  padding: 0.5rem;
+}
+
+.logoImage {
+  display: block;
+  width: min(15rem, 74vw);
+  height: auto;
+}
+
+.tagline {
+  margin: 0;
+  color: #737373;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.025em;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.025em;
+}
+
+.link,
+.creditLink {
+  transition: color 150ms;
+}
+
+.link:hover,
+.creditLink:hover {
+  color: #fff;
+}
+
+.copyright {
+  color: #525252;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.desktopBreak {
+  display: none;
+}
+
+.builtWith {
+  display: inline-block;
+}
+
+.creditLink {
+  color: #a3a3a3;
+}
+
+@media (min-width: 768px) {
+  .footer {
+    margin-inline: 1.5rem;
+  }
+
+  .inner {
+    flex-direction: row;
+  }
+
+  .brandBlock {
+    text-align: left;
+  }
+
+  .links {
+    gap: 2.5rem;
+  }
+
+  .copyright {
+    text-align: right;
+  }
+
+  .desktopBreak {
+    display: block;
+  }
+
+  .builtWith {
+    margin-top: 0.25rem;
+  }
+}
+</file>
+
+<file path="src/components/Header.jsx">
+import { useState, useEffect } from 'react';
+import { Menu, X } from 'lucide-react';
+import { config } from '../config';
+import styles from "./Header.module.css";
+
+export function Header() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const navLinks = [
+    { name: 'Philosophy', href: '#philosophy' },
+    { name: 'Why Us', href: '#why-us' },
+    { name: 'Services', href: '#services' },
+    { name: 'Clients', href: '#clients' },
+  ];
+
+  return (
+    <header className={`${styles.header} ${isScrolled ? styles.scrolled : styles.top}`}>
+      <div className={styles.inner}>
+        <a href="#" className={styles.logo} aria-label={config.company.name}>
+          {config.company.name}
+        </a>
+        
+        {/* Desktop Nav */}
+        <nav className={styles.desktopNav}>
+          {navLinks.map((link) => (
+            <a key={link.name} href={link.href} className={styles.navLink}>
+              {link.name}
+            </a>
+          ))}
+        </nav>
+        
+        <div className={styles.desktopActions}>
+          <a href="#contact" className={styles.cta}>
+            Talk to Us
+          </a>
+        </div>
+        
+        {/* Mobile menu button */}
+        <div className={styles.mobileActions}>
+          <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className={styles.menuButton} aria-label="Toggle Menu">
+            {isMobileMenuOpen ? <X className={styles.menuIcon} /> : <Menu className={styles.menuIcon} />}
+          </button>
+        </div>
+      </div>
+      
+      {/* Mobile Nav */}
+      {isMobileMenuOpen && (
+        <div className={styles.mobileNav}>
+          {navLinks.map((link) => (
+            <a key={link.name} href={link.href} onClick={() => setIsMobileMenuOpen(false)} className={styles.mobileNavLink}>
+              {link.name}
+            </a>
+          ))}
+          <a href="#contact" onClick={() => setIsMobileMenuOpen(false)} className={styles.mobileCta}>
+            Talk to Us
+          </a>
+        </div>
+      )}
+    </header>
+  );
+}
+</file>
+
+<file path="src/components/Header.module.css">
+.header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 50;
+  transition: all 300ms;
+}
+
+.top {
+  background: transparent;
+  padding-block: 1.5rem;
+}
+
+.scrolled {
+  border-bottom: 1px solid #e5e5e5;
+  background: rgba(255, 255, 255, 0.9);
+  padding-block: 1rem;
+  backdrop-filter: blur(12px);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+  color: #171717;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1rem, 4vw, 1.25rem);
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: capitalize;
+}
+
+.desktopNav,
+.desktopActions {
+  display: none;
+}
+
+.navLink {
+  color: #525252;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color 150ms;
+}
+
+.navLink:hover {
+  color: #171717;
+}
+
+
+.menuButton {
+  padding: 0.5rem;
+}
+
+.menuIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.cta,
+.mobileCta {
+  background: #f7931e;
+  color: #fff;
+  font-weight: 500;
+}
+
+.cta {
+  border-radius: 9999px;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.875rem;
+  transition: background-color 150ms;
+}
+
+.cta:hover {
+  background: #db7810;
+}
+
+.mobileActions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.mobileNav {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-bottom: 1px solid #e5e5e5;
+  background: #fff;
+  padding: 1.5rem;
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+}
+
+.mobileNavLink {
+  padding: 0.5rem;
+  color: #171717;
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+.mobileCta {
+  margin-top: 1rem;
+  border-radius: 0.75rem;
+  padding: 1rem 1.25rem;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .logo {
+    font-size: 1.5rem;
+  }
+
+  .desktopNav,
+  .desktopActions {
+    display: flex;
+    align-items: center;
+  }
+
+  .desktopNav {
+    gap: 2rem;
+  }
+
+  .desktopActions {
+    gap: 1rem;
+  }
+
+  .mobileActions,
+  .mobileNav {
+    display: none;
+  }
+}
+</file>
+
+<file path="src/components/Hero.jsx">
+import { motion } from 'motion/react';
+import { ArrowRight, MessageCircle } from 'lucide-react';
+import { config } from '../config';
+import styles from "./Hero.module.css";
+
+export function Hero() {
+  return (
+    <section className={styles.section}>
+      {/* Sophisticated grid background */}
+      <div className={styles.gridBackground} />
+      
+      {/* Decorative glowing elements */}
+      <div className={styles.glowRight} />
+      <div className={styles.glowLeft} />
+
+      <div className={styles.container}>
+        <div className={styles.contentGrid}>
+          <div className={styles.copy}>
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className={styles.badge}
+            >
+              <span className={styles.badgeDot}></span>
+              <span className={styles.badgeText}>Premium Talent Partner</span>
+            </motion.div>
+            
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className={styles.title}
+            >
+              Hunt. Hire.<br/>
+              <span className={styles.titleAccent}>Thrive.</span>
+            </motion.h1>
+            
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className={styles.description}
+            >
+              We partner with visionary startups and product companies to secure elite engineering talent. Elevating your hiring strategy from initial search to final close.
+            </motion.p>
+            
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className={styles.actions}
+            >
+              <a href="#contact" className={styles.primaryButton}>
+                Book a Hiring Discussion
+                <ArrowRight className={styles.buttonIcon} />
+              </a>
+              <a href={`https://wa.me/${config.company.whatsapp.replace(/\+/g, '')}`} target="_blank" rel="noopener noreferrer" className={styles.secondaryButton}>
+                <MessageCircle className={styles.buttonIcon} />
+                WhatsApp Us
+              </a>
+            </motion.div>
+          </div>
+          
+          <div className={styles.visualColumn}>
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className={styles.visual}
+            >
+              {/* Abstract graphical element representing talent network */}
+              <div className={styles.outerRing}>
+                <div className={styles.dashedRing} />
+                <div className={styles.middleRing}>
+                  <div className={styles.dottedRing} />
+                  <div className={styles.innerCircle}>
+                    <div className={styles.innerGradient} />
+                    <div className={styles.logoCircle}>
+                      <span className={styles.visualLogo}>SR</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+</file>
+
+<file path="src/components/Hero.module.css">
+.section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 90vh;
+  overflow: hidden;
+  padding: 10rem 1.5rem 6rem;
+}
+
+.gridBackground {
+  position: absolute;
+  inset: 0;
+  z-index: -10;
+  background-image: linear-gradient(to right, #fff 1px, transparent 1px), linear-gradient(to bottom, #fff 1px, transparent 1px);
+  background-size: 24px 24px;
+  mask-image: radial-gradient(ellipse 60% 50% at 50% 0%, #000 70%, transparent 100%);
+}
+
+.glowRight,
+.glowLeft {
+  position: absolute;
+  z-index: -10;
+  border-radius: 9999px;
+  opacity: 0.6;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+
+.glowRight {
+  top: 25%;
+  right: 0;
+  width: 500px;
+  height: 500px;
+  margin-right: -8rem;
+  background: #fff;
+  filter: blur(100px);
+}
+
+.glowLeft {
+  bottom: 0;
+  left: 25%;
+  width: 600px;
+  height: 600px;
+  margin-left: -8rem;
+  background: #fff;
+  filter: blur(120px);
+}
+
+
+
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+}
+
+.contentGrid {
+  display: grid;
+  align-items: center;
+  gap: 3rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  border: 1px solid #e5e5e5;
+  border-radius: 9999px;
+  background: rgb(255 255 255 / 0.5);
+  padding: 0.375rem 1rem;
+  backdrop-filter: blur(4px);
+}
+
+.badgeDot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background: #f7931e;
+  box-shadow: 0 0 8px rgb(247 147 30 / 0.55);
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.badgeText {
+  color: #404040;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0 0 2rem;
+  font-family: "Playfair Display", serif;
+  font-size: 3.75rem;
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: 0;
+}
+
+.titleAccent {
+  color: #00094d;
+  font-style: italic;
+}
+
+.description {
+  max-width: 42rem;
+  margin: 0 0 3rem;
+  color: #525252;
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.625;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.primaryButton,
+.secondaryButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  padding: 1rem 2rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: all 150ms;
+}
+
+.primaryButton {
+  background: #f7931e;
+  color: #fff;
+  box-shadow: 0 20px 25px -5px rgb(247 147 30 / 0.2), 0 8px 10px -6px rgb(247 147 30 / 0.16);
+}
+
+.primaryButton:hover {
+  background: #db7810;
+}
+
+
+.secondaryButton {
+  border: 1px solid #d4d4d4;
+  background: transparent;
+  color: #171717;
+}
+
+.secondaryButton:hover {
+  background: #fff;
+}
+
+
+.buttonIcon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.visualColumn {
+  display: none;
+}
+
+.visual {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+}
+
+.outerRing,
+.middleRing,
+.innerCircle,
+.logoCircle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+}
+
+.outerRing {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgb(229 229 229 / 0.5);
+  padding: 2rem;
+}
+
+.dashedRing,
+.dottedRing,
+.innerGradient {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+}
+
+.dashedRing {
+  border: 1px dashed #e5e5e5;
+  animation: spin 60s linear infinite;
+}
+
+.middleRing {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #e5e5e5;
+  padding: 2rem;
+}
+
+.dottedRing {
+  border: 1px dotted #d4d4d4;
+  animation: spinReverse 40s linear infinite;
+}
+
+.innerCircle {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #fff;
+}
+
+.innerGradient {
+  background: linear-gradient(to top right, transparent, rgb(255 255 255 / 0.5));
+}
+
+.logoCircle {
+  position: relative;
+  z-index: 10;
+  width: 50%;
+  height: 50%;
+  padding: 0;
+  border-radius: 9999px;
+  background: #fff;
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+}
+
+.visualLogo {
+  color: #a3a3a3;
+  font-family: "Playfair Display", serif;
+  font-size: 1.875rem;
+  font-style: italic;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinReverse {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@media (min-width: 640px) {
+  .actions {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    width: auto;
+  }
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-top: 14rem;
+    padding-bottom: 8rem;
+  }
+
+  .title {
+    font-size: 4.5rem;
+  }
+
+  .description {
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .contentGrid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 2rem;
+  }
+
+  .copy {
+    grid-column: span 7 / span 7;
+  }
+
+  .visualColumn {
+    display: block;
+    grid-column: span 5 / span 5;
+  }
+
+  .title {
+    font-size: 5.5rem;
+  }
+}
+</file>
+
+<file path="src/components/Metrics.jsx">
+import { motion, useInView, useSpring, useTransform } from 'motion/react';
+import { useEffect, useRef } from 'react';
+import { config } from '../config';
+import styles from "./Metrics.module.css";
+
+function Counter({ value, suffix }) {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-50px" });
+  const spring = useSpring(0, { bounce: 0, duration: 2500 });
+  const display = useTransform(spring, (current) => Math.floor(current) + suffix);
+
+  useEffect(() => {
+    if (inView) {
+      spring.set(value);
+    }
+  }, [inView, spring, value]);
+
+  return <motion.span ref={ref}>{display}</motion.span>;
+}
+
+export function Metrics() {
+  return (
+    <section className={styles.section}>
+      <div className={styles.container}>
+        <div className={styles.grid}>
+          {config.metrics.map((metric, idx) => (
+            <div key={idx} className={`${styles.metric} ${idx !== 0 && idx !== 2 && idx !== 4 ? styles.mobileDivider : ''} ${idx > 1 ? styles.desktopDivider : ''}`}>
+              <span className={styles.value}>
+                <Counter value={metric.value} suffix={metric.suffix} />
+              </span>
+              <span className={styles.label}>{metric.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+</file>
+
+<file path="src/components/Metrics.module.css">
+.section {
+  border-block: 1px solid #e5e5e5;
+  background: #fff;
+  padding-block: 4rem;
+}
+
+.container {
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 2rem;
+  row-gap: 3rem;
+}
+
+.metric {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobileDivider {
+  border-left: 1px solid #e5e5e5;
+  padding-left: 1.5rem;
+}
+
+.value {
+  margin-bottom: 0.75rem;
+  font-family: "Playfair Display", serif;
+  font-size: 1.875rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+.label {
+  color: #737373;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-block: 6rem;
+  }
+
+  .value {
+    font-size: 3rem;
+  }
+
+  .label {
+    font-size: 0.75rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .desktopDivider {
+    border-left: 1px solid #e5e5e5;
+    padding-left: 1.5rem;
+  }
+}
+</file>
+
+<file path="src/components/Philosophy.jsx">
+import { motion } from 'motion/react';
+import { config } from '../config';
+import styles from "./Philosophy.module.css";
+
+export function Philosophy() {
+  return (
+    <section id="philosophy" className={styles.section}>
+      <div className={styles.container}>
+        <div className={styles.heading}>
+          <h2 className={styles.eyebrow}>Our Philosophy</h2>
+          <p className={styles.title}>
+            A principled approach to building high-performing technology teams.
+          </p>
+        </div>
+        
+        <div className={styles.grid}>
+          {config.philosophy.map((item, idx) => {
+            const Icon = item.icon;
+            return (
+              <motion.div 
+                key={item.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                className={styles.card}
+              >
+                <div className={styles.iconWrap}>
+                  <Icon className={styles.icon} />
+                </div>
+                <h3 className={styles.cardTitle}>{item.title}</h3>
+                <p className={styles.description}>{item.description}</p>
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+</file>
+
+<file path="src/components/Philosophy.module.css">
+.section {
+  padding: 6rem 1.5rem;
+}
+
+.container {
+  max-width: 80rem;
+  margin-inline: auto;
+}
+
+.heading {
+  margin-bottom: 4rem;
+}
+
+.eyebrow {
+  margin: 0 0 1rem;
+  color: #737373;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.title {
+  max-width: 48rem;
+  margin: 0;
+  font-family: "Playfair Display", serif;
+  font-size: 1.875rem;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+}
+
+.iconWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  margin-bottom: 2rem;
+  border: 1px solid #e5e5e5;
+  border-radius: 1rem;
+  background: #fff;
+  transition: transform 300ms;
+}
+
+.card:hover .iconWrap {
+  transform: scale(1.05);
+}
+
+.icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #171717;
+}
+
+.cardTitle {
+  margin: 0 0 1rem;
+  font-family: "Playfair Display", serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.description {
+  margin: 0;
+  color: #525252;
+  font-weight: 500;
+  line-height: 1.625;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-block: 8rem;
+  }
+
+  .heading {
+    margin-bottom: 6rem;
+  }
+
+  .title {
+    font-size: 3rem;
+  }
+
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 3rem;
+  }
+
+  .cardTitle {
+    font-size: 1.875rem;
+  }
+}
+</file>
+
+<file path="src/components/Process.jsx">
+import { motion } from 'motion/react';
+import { config } from '../config';
+import styles from "./Process.module.css";
+
+export function Process() {
+  return (
+    <section className={styles.section}>
+      <div className={styles.container}>
+        <div className={styles.heading}>
+          <h2 className={styles.eyebrow}>Our Methodology</h2>
+          <p className={styles.title}>
+            A rigorous, four-step framework designed to eliminate friction.
+          </p>
+        </div>
+        
+        <div className={styles.grid}>
+          {/* Connecting line */}
+          <div className={styles.line} />
+          
+          {config.process.map((step, idx) => (
+            <motion.div 
+              key={step.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              className={styles.step}
+            >
+              <div className={styles.number}>
+                {idx + 1}
+              </div>
+              <h3 className={styles.stepTitle}>{step.title}</h3>
+              <p className={styles.description}>{step.description}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+</file>
+
+<file path="src/components/Process.module.css">
+.section {
+  padding: 6rem 1.5rem;
+}
+
+.container {
+  max-width: 80rem;
+  margin-inline: auto;
+}
+
+.heading {
+  max-width: 48rem;
+  margin-bottom: 5rem;
+}
+
+.eyebrow {
+  margin: 0 0 1rem;
+  color: #737373;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0;
+  font-family: "Playfair Display", serif;
+  font-size: 1.875rem;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.grid {
+  position: relative;
+  display: grid;
+  gap: 3rem;
+}
+
+.line {
+  display: none;
+}
+
+.step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 2rem;
+  border: 1px solid #d4d4d4;
+  border-radius: 9999px;
+  background: #fff;
+  color: #171717;
+  font-family: "Playfair Display", serif;
+  font-size: 1.125rem;
+  font-weight: 500;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+.stepTitle {
+  margin: 0 0 1rem;
+  font-family: "Playfair Display", serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.description {
+  margin: 0;
+  color: #525252;
+  font-weight: 500;
+  line-height: 1.625;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-block: 8rem;
+  }
+
+  .heading {
+    margin-bottom: 6rem;
+  }
+
+  .title {
+    font-size: 3rem;
+  }
+
+  .grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .line {
+    position: absolute;
+    top: 1.5rem;
+    right: 3rem;
+    left: 3rem;
+    z-index: -10;
+    display: block;
+    height: 1px;
+    background: #fff;
+  }
+}
+</file>
+
+<file path="src/components/Services.jsx">
+import { motion } from 'motion/react';
+import { Check } from 'lucide-react';
+import { config } from '../config';
+import styles from "./Services.module.css";
+
+export function Services() {
+  return (
+    <section id="services" className={styles.section}>
+      <div className={styles.container}>
+        <div className={styles.headingRow}>
+          <div className={styles.headingCopy}>
+            <h2 className={styles.eyebrow}>Our Capabilities</h2>
+            <p className={styles.title}>
+              Tailored recruitment frameworks designed to scale with your ambitions.
+            </p>
+          </div>
+        </div>
+        
+        <div className={styles.list}>
+          {config.services.map((service, idx) => (
+            <motion.div 
+              key={service.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              className={styles.card}
+            >
+              <div className={styles.serviceCopy}>
+                <h3 className={styles.cardTitle}>{service.title}</h3>
+                <p className={styles.description}>{service.description}</p>
+              </div>
+              
+              <div className={styles.featuresColumn}>
+                <ul className={styles.features}>
+                  {service.features.map((feature, fIdx) => (
+                    <li key={fIdx} className={styles.featureItem}>
+                      <div className={styles.checkWrap}>
+                        <Check className={styles.checkIcon} />
+                      </div>
+                      <span className={styles.featureText}>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+</file>
+
+<file path="src/components/Services.module.css">
+.section {
+  padding: 6rem 1.5rem;
+}
+
+.container {
+  max-width: 80rem;
+  margin-inline: auto;
+}
+
+.headingRow {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.headingCopy {
+  max-width: 48rem;
+}
+
+.eyebrow {
+  margin: 0 0 1rem;
+  color: #737373;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0;
+  font-family: "Playfair Display", serif;
+  font-size: 1.875rem;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  border: 1px solid #e5e5e5;
+  border-radius: 1.5rem;
+  background: #fff;
+  padding: 2rem;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  transition: all 150ms;
+}
+
+.card:hover {
+  border-color: #d4d4d4;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+
+.cardTitle {
+  margin: 0 0 1.5rem;
+  font-family: "Playfair Display", serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.description {
+  margin: 0;
+  color: #525252;
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.625;
+}
+
+.featuresColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.features {
+  display: grid;
+  gap: 1.5rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.featureItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  color: #404040;
+}
+
+.checkWrap {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-top: 0.125rem;
+  border: 1px solid #e5e5e5;
+  border-radius: 9999px;
+  background: #fff;
+}
+
+.checkIcon {
+  width: 0.875rem;
+  height: 0.875rem;
+  color: #171717;
+}
+
+.featureText {
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+@media (min-width: 640px) {
+  .features {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-block: 8rem;
+  }
+
+  .headingRow {
+    flex-direction: row;
+    align-items: flex-end;
+    margin-bottom: 6rem;
+  }
+
+  .title {
+    font-size: 3rem;
+  }
+
+  .card {
+    padding: 3rem;
+  }
+
+  .cardTitle {
+    font-size: 2.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card {
+    flex-direction: row;
+    gap: 4rem;
+  }
+
+  .serviceCopy {
+    width: 41.666667%;
+  }
+
+  .featuresColumn {
+    width: 58.333333%;
+  }
+}
+</file>
+
+<file path="src/components/WhyUs.jsx">
+import { motion } from 'motion/react';
+import { config } from '../config';
+import styles from "./WhyUs.module.css";
+
+export function WhyUs() {
+  return (
+    <section id="why-us" className={styles.section}>
+      <div className={styles.container}>
+        <div className={styles.heading}>
+          <h2 className={styles.eyebrow}>What Sets Us Apart</h2>
+          <p className={styles.title}>
+            We blend deep industry insight with modern recruitment technology.
+          </p>
+        </div>
+        
+        <div className={styles.grid}>
+          {config.whyUs.map((item, idx) => {
+            let colSpan = styles.spanDefault;
+            if (idx === 0) colSpan = styles.spanLead;
+            else if (idx === 1) colSpan = styles.spanSupport;
+            else if (idx === 2 || idx === 3 || idx === 4) colSpan = styles.spanThird;
+            else if (idx === 5) colSpan = styles.spanFull;
+            
+            return (
+              <motion.div 
+                key={item.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.05 }}
+                className={`${styles.card} ${colSpan}`}
+              >
+                <div>
+                  <div className={styles.number}>0{idx + 1}</div>
+                  <h3 className={styles.cardTitle}>{item.title}</h3>
+                </div>
+                <p className={styles.description}>{item.description}</p>
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+</file>
+
+<file path="src/components/WhyUs.module.css">
+.section {
+  margin: 3rem 0.5rem;
+  border-radius: 2.5rem;
+  background: #0f172a;
+  color: #fff;
+  padding: 6rem 1.5rem;
+}
+
+.container {
+  max-width: 80rem;
+  margin-inline: auto;
+}
+
+.heading {
+  max-width: 48rem;
+  margin-bottom: 4rem;
+}
+
+.eyebrow {
+  margin: 0 0 1rem;
+  color: #a3a3a3;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0 0 1.5rem;
+  color: #fff;
+  font-family: "Playfair Display", serif;
+  font-size: 1.875rem;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid rgb(51 65 85 / 0.5);
+  border-radius: 1.5rem;
+  background: rgb(30 41 59 / 0.4);
+  padding: 2rem;
+  transition: background-color 150ms;
+}
+
+.card:hover {
+  background: rgb(30 41 59 / 0.8);
+}
+
+.number {
+  margin-bottom: 1.5rem;
+  color: #737373;
+  font-family: "Playfair Display", serif;
+  font-size: 1.25rem;
+  font-style: italic;
+}
+
+.cardTitle {
+  margin: 0 0 1rem;
+  color: #fff;
+  font-family: "Playfair Display", serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.description {
+  margin: 2rem 0 0;
+  color: #a3a3a3;
+  font-weight: 500;
+  line-height: 1.625;
+}
+
+@media (min-width: 768px) {
+  .section {
+    margin-inline: 1.5rem;
+    padding-block: 8rem;
+  }
+
+  .heading {
+    margin-bottom: 6rem;
+  }
+
+  .title {
+    font-size: 3rem;
+  }
+
+  .grid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+
+  .card {
+    padding: 3rem;
+  }
+
+  .spanDefault {
+    grid-column: span 6 / span 6;
+  }
+
+  .spanLead {
+    grid-column: span 7 / span 7;
+  }
+
+  .spanSupport {
+    grid-column: span 5 / span 5;
+  }
+
+  .spanThird,
+  .spanFull {
+    grid-column: span 12 / span 12;
+  }
+}
+
+@media (min-width: 1024px) {
+  .spanDefault,
+  .spanThird {
+    grid-column: span 4 / span 4;
+  }
+
+  .spanLead {
+    grid-column: span 7 / span 7;
+  }
+
+  .spanSupport {
+    grid-column: span 5 / span 5;
+  }
+
+  .spanFull {
+    grid-column: span 12 / span 12;
+  }
+}
+</file>
+
+<file path="src/App.jsx">
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+import { Header } from "./components/Header";
+import { Hero } from "./components/Hero";
+import { Metrics } from "./components/Metrics";
+import { Philosophy } from "./components/Philosophy";
+import { WhyUs } from "./components/WhyUs";
+import { Services } from "./components/Services";
+import { Clients } from "./components/Clients";
+import { Process } from "./components/Process";
+import { Contact } from "./components/Contact";
+import { Footer } from "./components/Footer";
+import styles from "./App.module.css";
+
+export default function App() {
+  return (
+    <div className={styles.app}>
+      <Header />
+      <main>
+        <Hero />
+        <Metrics />
+        <Philosophy />
+        <WhyUs />
+        <Services />
+        <Clients />
+        <Process />
+        <Contact />
+      </main>
+      <Footer />
+    </div>
+  );
+}
+</file>
+
+<file path="src/App.module.css">
+.app {
+  min-height: 100vh;
+}
+</file>
+
+<file path="src/config.js">
+import { Target, Briefcase, TrendingUp } from "lucide-react";
+
+export const config = {
+  company: {
+    name: "shree rama talent solutions",
+    tagline: "Hunt. Hire. Thrive.",
+    email: "sanath@ramatalent.com",
+    whatsapp: "+91 7259299386",
+    linkedinRama: "https://linkedin.com/company/shree-rama-talent-solutions",
+    linkedinSumukha: "https://linkedin.com/company/sumukha-ai"
+  },
+  metrics: [
+    { value: 120, suffix: "+", label: "Positions Closed" },
+    { value: 35, suffix: "", label: "Hiring Partners" },
+    { value: 15, suffix: "k", label: "Candidate Network" },
+    { value: 7, suffix: " Days", label: "Avg. Shortlist Time" },
+    { value: 82, suffix: "%", label: "Offer-to-Join" },
+    { value: 68, suffix: "%", label: "Repeat Clients" },
+  ],
+  philosophy: [
+    { title: "Hunt", description: "Identifying and engaging with elite passive talent that drives organizational transformation.", icon: Target },
+    { title: "Hire", description: "Streamlining the acquisition process to secure top-tier professionals seamlessly.", icon: Briefcase },
+    { title: "Thrive", description: "Ensuring long-term mutual success for both exceptional candidates and visionary companies.", icon: TrendingUp }
+  ],
+  whyUs: [
+    { title: "Innovative Recruitment", description: "Forward-thinking methodologies to source beyond traditional talent pools, uncovering hidden gems in the tech landscape." },
+    { title: "Tech Mastery", description: "Deep domain expertise allowing us to evaluate product and engineering roles with precise accuracy." },
+    { title: "Integrated Chatbot", description: "AI-enabled workflows for rapid candidate screening, ensuring zero drop-offs and higher engagement." },
+    { title: "Industry Pioneers", description: "Setting new benchmarks in executive search by combining data-driven insights with human intuition." },
+    { title: "Strategic Alliances", description: "We don't just fill roles; we build long-term talent pipelines tailored to your organizational scaling." },
+    { title: "Diversity Dynamo", description: "Deeply committed to helping companies build inclusive, high-performing, and diverse technical teams." }
+  ],
+  services: [
+    { title: "End-to-End Recruitment", description: "Comprehensive talent acquisition from initial market mapping and sourcing to final offer negotiation and onboarding.", features: ["Leadership & Executive Search", "Product & Engineering Roles", "Custom Hiring Campaigns"] },
+    { title: "Employee Engagement", description: "Data-backed strategies to retain top talent, build a thriving workplace culture, and reduce early attrition.", features: ["Culture Alignment", "Retention Consulting", "Performance Frameworks"] },
+    { title: "Vendor-On-Premise (VOP)", description: "Dedicated on-site recruitment partners integrating directly with your HR to manage high-volume scaling.", features: ["Process Coordination", "Startup Scaling Support", "Seamless HR Integration"] }
+  ],
+  clients: [
+    { name: "Client 01" }, { name: "Client 02" }, { name: "Client 03" }, { name: "Client 04" }, { name: "Client 05" },
+    { name: "Client 06" }, { name: "Client 07" }, { name: "Client 08" }, { name: "Client 09" }, { name: "Client 10" }
+  ],
+  process: [
+    { title: "Understand", description: "Deep-dive into your culture, technical stack, and strategic goals to align our search." },
+    { title: "Source", description: "Targeted, discreet outreach to our curated network of passive and active top-tier talent." },
+    { title: "Shortlist", description: "Rigorous technical and cultural screening to present only the most exceptional candidates." },
+    { title: "Close", description: "Expert offer negotiation, onboarding support, and continuous follow-up to ensure retention." }
+  ]
+};
+</file>
+
+<file path="src/index.css">
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: #fff;
+  color: #171717;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  transition: color 300ms, background-color 300ms;
+}
+
+::selection {
+  background: #171717;
+  color: #fff;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+button {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+svg {
+  display: block;
+  vertical-align: middle;
+}
+</file>
+
+<file path="src/main.jsx">
+import {StrictMode} from 'react';
+import {createRoot} from 'react-dom/client';
+import App from './App.jsx';
+import './index.css';
+
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+);
+</file>
+
+<file path=".gitignore">
+node_modules/
+build/
+dist/
+coverage/
+.DS_Store
+*.log
+.env*
+!.env.example
+</file>
+
+<file path="index.html">
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="shree rama talent solutions - Premium tech and product talent recruitment. Hunt. Hire. Thrive." />
+    <title>shree rama talent solutions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+</file>
+
+<file path="metadata.json">
+{
+  "name": "",
+  "description": "",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+</file>
+
+<file path="package.json">
+{
+  "name": "react-example",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port=3000 --host=0.0.0.0",
+    "build": "vite build",
+    "preview": "vite preview",
+    "clean": "rm -rf dist server.js",
+    "lint": "vite build"
+  },
+  "dependencies": {
+    "@google/genai": "^2.4.0",
+    "@vitejs/plugin-react": "^5.0.4",
+    "lucide-react": "^0.546.0",
+    "react": "^19.0.1",
+    "react-dom": "^19.0.1",
+    "vite": "^6.2.3",
+    "express": "^4.21.2",
+    "dotenv": "^17.2.3",
+    "motion": "^12.23.24"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0",
+    "vite": "^6.2.3"
+  }
+}
+</file>
+
+<file path="README.md">
+<div align="center">
+<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
+</div>
+
+# Run and deploy your AI Studio app
+
+This contains everything you need to run your app locally.
+
+View your app in AI Studio: https://ai.studio/apps/8ea51bb9-84f1-49ff-a4b3-216cf4e6ca07
+
+## Run Locally
+
+**Prerequisites:**  Node.js
+
+
+1. Install dependencies:
+   `npm install`
+2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+3. Run the app:
+   `npm run dev`
+</file>
+
+<file path="vite.config.js">
+import react from '@vitejs/plugin-react';
+import path from 'path';
+import {defineConfig} from 'vite';
+import {fileURLToPath} from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+export default defineConfig(() => {
+  return {
+    plugins: [react()],
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, '.'),
+      },
+    },
+    server: {
+      // HMR is disabled in AI Studio via DISABLE_HMR env var.
+      // Do not modifyâfile watching is disabled to prevent flickering during agent edits.
+      hmr: process.env.DISABLE_HMR !== 'true',
+      // Disable file watching when DISABLE_HMR is true to save CPU during agent edits.
+      watch: process.env.DISABLE_HMR === 'true' ? null : {},
+    },
+  };
+});
+</file>
+
+</files>

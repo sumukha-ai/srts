@@ -1,0 +1,489 @@
+.section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 8rem 1rem 6rem; /* Mobile-first padding */
+  background: #ffffff;
+}
+
+.container { width: 100%; max-width: 80rem; margin-inline: auto; }
+.content { display: flex; flex-direction: column; align-items: center; text-align: center; }
+
+/* --- Hero Text --- */
+.badge { display: inline-flex; align-items: center; gap: 0.5rem; margin-bottom: 2rem; border: 1px solid #e5e5e5; border-radius: 9999px; background: #fff; padding: 0.5rem 1rem; }
+.badgeDot { width: 0.5rem; height: 0.5rem; border-radius: 9999px; background: #10b981; box-shadow: 0 0 10px rgba(16, 185, 129, 0.4); animation: pulse 2s infinite; }
+.badgeText { color: #171717; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+.title { margin: 0 0 1.5rem; font-size: 2.75rem; font-weight: 800; line-height: 1.1; letter-spacing: -0.04em; color: #0f172a; }
+.titleAccent { color: #f7931e; }
+.description { max-width: 42rem; margin: 0 auto 2.5rem; color: #525252; font-size: 1rem; font-weight: 500; line-height: 1.6; }
+
+.actions { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; width: 100%; }
+.primaryButton, .secondaryButton { display: inline-flex; align-items: center; justify-content: center; width: 100%; max-width: 20rem; gap: 0.75rem; border-radius: 9999px; padding: 1rem 2rem; font-size: 0.875rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; transition: all 200ms ease; }
+.primaryButton { background: #0f172a; color: #ffffff; }
+.primaryButton:hover { background: #1e293b; transform: translateY(-2px); box-shadow: 0 10px 20px -5px rgba(15, 23, 42, 0.2); }
+.secondaryButton { border: 1px solid #e5e5e5; background: transparent; color: #171717; }
+.secondaryButton:hover { background: #f8fafc; border-color: #cbd5e1; }
+.buttonIcon { width: 1rem; height: 1rem; }
+
+/* --- ATS Dashboard Mobile-First --- */
+.dashboardContainer { width: 100%; max-width: 72rem; margin-top: 4rem; perspective: 1000px; }
+
+/* Shorter on mobile so it fits gracefully */
+.dashboardWindow { display: flex; width: 100%; height: 420px; background: #ffffff; border-radius: 0.75rem; overflow: hidden; box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.05), 0 20px 40px -10px rgba(15, 23, 42, 0.15), 0 10px 20px -5px rgba(15, 23, 42, 0.05); }
+
+/* Hidden entirely on phones */
+.sidebar { display: none; width: 4rem; background: #020617; flex-direction: column; justify-content: space-between; align-items: center; padding: 1.5rem 0; flex-shrink: 0; border-right: 1px solid #1e293b; }
+.sidebarTop, .sidebarBottom { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
+.logoSkeleton { width: 2rem; height: 2rem; background: linear-gradient(135deg, #f7931e, #fbbf24); border-radius: 0.5rem; margin-bottom: 1rem; }
+.sidebarIcon, .sidebarIconActive { width: 2.5rem; height: 2.5rem; display: flex; align-items: center; justify-content: center; border-radius: 0.5rem; }
+.sidebarIcon { color: #475569; }
+.sidebarIconActive { background: rgba(255, 255, 255, 0.1); color: #ffffff; }
+
+.mainView { flex: 1; display: flex; flex-direction: column; background: #fafafa; overflow: hidden; }
+
+/* Tighter top bar for mobile */
+.topBar { height: 3.5rem; border-bottom: 1px solid #f1f5f9; background: #ffffff; display: flex; align-items: center; justify-content: space-between; padding: 0 1rem; }
+.breadcrumb { display: flex; align-items: center; gap: 0.35rem; font-size: 0.75rem; font-weight: 600; }
+.darkText { color: #0f172a; } .lightText { color: #cbd5e1; } .mutedText { color: #64748b; }
+.topActions { display: flex; align-items: center; gap: 1rem; }
+.searchSkeleton { display: none; } /* Hidden on mobile */
+.iconMuted { color: #94a3b8; }
+.avatarProfile { width: 28px; height: 28px; background: #cbd5e1; border-radius: 50%; border: 2px solid #ffffff; box-shadow: 0 0 0 1px #e2e8f0; }
+
+/* Tighter grid and paddings for mobile */
+.kanbanBoard { flex: 1; display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; padding: 1rem 0.75rem; background: #fafafa; }
+.column { background: #f1f5f9; border-radius: 0.5rem; padding: 0.5rem; display: flex; flex-direction: column; border: 1px solid #e2e8f0; }
+.colHeader { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem; }
+.colTitle { display: flex; align-items: center; gap: 0.35rem; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; color: #475569; }
+.dot { width: 0.4rem; height: 0.4rem; border-radius: 50%; }
+.colCount { font-size: 0.65rem; font-weight: 700; padding: 0.125rem 0.35rem; border-radius: 9999px; color: #94a3b8; background: #e2e8f0; }
+
+.colBody { display: flex; flex-direction: column; gap: 0.5rem; }
+.colBodyTrack { position: relative; flex: 1; display: flex; flex-direction: column; gap: 0.5rem; }
+
+.kanbanCard { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 0.5rem; padding: 0.75rem; box-shadow: 0 1px 2px rgba(0,0,0,0.02); }
+.avatarMini { width: 20px; height: 20px; border-radius: 50%; }
+
+/* Interactive Card */
+.kanbanCardInteractive { position: relative; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 0.5rem; cursor: grab; z-index: 20; }
+.kanbanCardInteractive:active { cursor: grabbing; }
+
+.cardInner { position: relative; padding: 0.75rem; border-radius: 0.5rem; overflow: hidden; }
+
+/* Reduced drag hint size for mobile */
+.dragHint { position: absolute; top: 0; left: 0; right: 0; background: rgba(247, 147, 30, 0.1); color: #d97706; font-size: 0.55rem; font-weight: 800; text-transform: uppercase; display: flex; align-items: center; justify-content: center; gap: 0.25rem; padding: 0.2rem; letter-spacing: 0.05em; z-index: 5; }
+.dropZoneHint { border: 2px dashed #cbd5e1; border-radius: 0.5rem; height: 4rem; display: flex; align-items: center; justify-content: center; color: #94a3b8; font-size: 0.75rem; font-weight: 600; text-align: center;}
+
+.shimmerEffectActive { position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.15), transparent); transform: skewX(-20deg); animation: shimmerSweep 1.5s ease-out forwards; }
+
+.cardHeader { display: flex; align-items: center; gap: 0.5rem; margin: 0.75rem 0 0.75rem; position: relative; z-index: 2; }
+.avatarHighlight { width: 20px; height: 20px; border-radius: 50%; background: linear-gradient(135deg, #f7931e, #fbbf24); box-shadow: 0 2px 4px rgba(247, 147, 30, 0.2); }
+.cardLines { flex: 1; display: flex; flex-direction: column; gap: 0.25rem; }
+.cardFooter { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #f1f5f9; padding-top: 0.5rem; position: relative; z-index: 2; }
+
+.tagSkeletonPending { width: 32px; height: 12px; border-radius: 4px; background: #fef3c7; }
+.tagSkeletonActive { width: 32px; height: 12px; border-radius: 4px; background: #d1fae5; }
+.tagSkeleton { width: 32px; height: 12px; border-radius: 4px; }
+
+.successBadge { position: absolute; top: -8px; right: -8px; background: #ffffff; border-radius: 50%; box-shadow: 0 4px 10px rgba(16, 185, 129, 0.2); display: flex; align-items: center; justify-content: center; z-index: 30; }
+
+@keyframes pulse { 50% { opacity: 0.5; } }
+@keyframes shimmerSweep { 0% { left: -100%; } 100% { left: 200%; } }
+
+/* Tablets and Up (Restore Desktop Spacing & Features) */
+@media (min-width: 640px) { 
+  .actions { flex-direction: row; } 
+  .primaryButton, .secondaryButton { width: auto; } 
+}
+
+@media (min-width: 768px) { 
+  .section { padding: 12rem 1.5rem 6rem; } 
+  .title { font-size: 4.5rem; } 
+  .description { font-size: 1.25rem; } 
+  .dashboardContainer { margin-top: 5rem; }
+  .dashboardWindow { height: 500px; border-radius: 1rem; }
+  
+  /* Reveal Sidebar */
+  .sidebar { display: flex; }
+  
+  /* Restore Desktop Paddings */
+  .topBar { height: 4rem; padding: 0 2rem; }
+  .breadcrumb { font-size: 0.875rem; }
+  .searchSkeleton { display: block; width: 150px; height: 32px; background: #f1f5f9; border-radius: 9999px; border: 1px solid #e2e8f0; }
+  .avatarProfile { width: 32px; height: 32px; }
+  
+  .kanbanBoard { grid-template-columns: repeat(4, 1fr); gap: 1.5rem; padding: 1.5rem 2rem; }
+  .column { padding: 1rem; border-radius: 0.75rem; }
+  .colTitle { font-size: 0.75rem; }
+  .dot { width: 0.5rem; height: 0.5rem; }
+  .colCount { font-size: 0.75rem; padding: 0.125rem 0.5rem; }
+  .colBody { gap: 0.75rem; }
+  .colBodyTrack { gap: 0.75rem; }
+  
+  .kanbanCard, .cardInner { padding: 1rem; }
+  .avatarMini, .avatarHighlight { width: 24px; height: 24px; }
+  .cardHeader { gap: 0.75rem; margin: 0.75rem 0 1rem; }
+  .cardLines { gap: 0.375rem; }
+  .cardFooter { padding-top: 0.75rem; }
+  .tagSkeletonPending, .tagSkeletonActive, .tagSkeleton { width: 40px; height: 16px; }
+  
+  .dragHint { font-size: 0.65rem; padding: 0.25rem; }
+  .dropZoneHint { height: 5rem; font-size: 0.875rem; }
+  .successBadge { top: -10px; right: -10px; }
+}
+
+@media (min-width: 1024px) { 
+  .title { font-size: 5.5rem; } 
+}
+
+/* Hard hide mobile columns based on class */
+@media (max-width: 767px) { 
+  .hideMobile { display: none; } 
+}
+/* --- Easter Egg Lead Capture Engine --- */
+
+.easterEggWrapper {
+  position: absolute;
+  bottom: -3.5rem; /* Pops out just below the dashboard */
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  z-index: 10;
+  padding: 0 1rem;
+}
+
+.easterEggPill {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  background: #0f172a;
+  padding: 0.5rem 0.5rem 0.5rem 1.5rem;
+  border-radius: 9999px;
+  width: 100%;
+  max-width: 42rem;
+  /* Glowing emerald shadow */
+  box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.4), 0 0 0 1px rgba(16, 185, 129, 0.3);
+}
+
+.easterEggText {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #ffffff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.sparkleIcon {
+  color: #10b981;
+}
+
+.easterEggForm {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+  max-width: 16rem;
+}
+
+.easterEggInput {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+  padding: 0.5rem 1rem;
+  color: #ffffff;
+  font-size: 0.875rem;
+  outline: none;
+  transition: all 200ms ease;
+  width: 100%;
+}
+
+.easterEggInput::placeholder {
+  color: #64748b;
+}
+
+.easterEggInput:focus {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #10b981;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+}
+
+.easterEggSubmit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background: #10b981;
+  color: #ffffff;
+  flex-shrink: 0;
+  transition: all 200ms ease;
+}
+
+.easterEggSubmit:hover {
+  background: #059669;
+  transform: scale(1.05);
+}
+
+.easterEggSuccess {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: #10b981;
+  font-size: 0.875rem;
+  font-weight: 700;
+  width: 100%;
+  padding: 0.35rem 0;
+}
+
+/* Mobile Adjustments for Easter Egg */
+@media (max-width: 767px) {
+  .dashboardContainer {
+    /* Create extra space for the pill on mobile */
+    margin-bottom: 4rem; 
+  }
+  .easterEggWrapper {
+    bottom: -6.5rem; /* Pushed further down to not overlap the mobile dashboard */
+  }
+  .easterEggPill {
+    flex-direction: column;
+    padding: 1rem;
+    border-radius: 1.25rem;
+    gap: 1rem;
+    text-align: center;
+  }
+  .easterEggText {
+    justify-content: center;
+    font-size: 0.8rem;
+  }
+  .easterEggForm {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+/* --- Premium Modal Pop Up Overlay --- */
+
+.easterEggOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 1.5rem;
+}
+
+.popupCard {
+  background: #0f172a;
+  border-radius: 1.5rem;
+  padding: 2.5rem 2rem;
+  width: 100%;
+  max-width: 24rem;
+  text-align: center;
+  box-shadow: 0 25px 50px -12px rgba(16, 185, 129, 0.25), 0 0 0 1px rgba(16, 185, 129, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.popupHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.popupIconWrap {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background: rgba(16, 185, 129, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+}
+
+.popupIcon {
+  color: #10b981;
+}
+
+.popupTitle {
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin: 0 0 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.popupDesc {
+  color: #94a3b8;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0;
+  font-weight: 500;
+}
+
+.popupForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.popupInput {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  font-size: 0.95rem;
+  outline: none;
+  transition: all 200ms ease;
+}
+
+.popupInput::placeholder {
+  color: #64748b;
+}
+
+.popupInput:focus {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #10b981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+}
+
+.popupSubmit {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  border-radius: 0.75rem;
+  background: #10b981;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 200ms ease;
+}
+
+.popupSubmit:hover {
+  background: #059669;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.3);
+}
+
+.popupSuccess {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem 0;
+}
+
+.successIconWrap {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background: rgba(16, 185, 129, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+/* Mobile Adjustments for Pop Up Overlay */
+@media (max-width: 767px) {
+  .popupCard {
+    padding: 2rem 1.5rem;
+    gap: 1.25rem;
+  }
+  .popupIconWrap {
+    width: 3rem;
+    height: 3rem;
+    margin-bottom: 1rem;
+  }
+  .popupTitle {
+    font-size: 1.25rem;
+  }
+  .popupDesc {
+    font-size: 0.875rem;
+  }
+}
+
+/* --- NEW: Floating Tooltip --- */
+.actionTooltip {
+  position: absolute;
+  top: -2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #0f172a;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.4rem 0.75rem;
+  border-radius: 0.5rem;
+  white-space: nowrap;
+  pointer-events: none; /* So it doesn't block the drag */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  z-index: 60;
+}
+
+/* The little triangle pointing down */
+.actionTooltip::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 8px;
+  height: 8px;
+  background: #0f172a;
+}
+
+/* --- NEW: Magnetic Drop Zone --- */
+.magneticDropZone {
+  border: 2px dashed #cbd5e1;
+  border-radius: 0.5rem;
+  height: 6.5rem; /* Matched exactly to the height of the card */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: #94a3b8;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: rgba(16, 185, 129, 0.02); /* Slight green tint */
+}
+
+.dropZoneIconWrap {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dropZoneArrow {
+  color: #10b981;
+  animation: pointRight 1.5s infinite;
+}
+
+@keyframes pointRight {
+  0%, 100% { transform: translateX(-2px); }
+  50% { transform: translateX(2px); }
+}

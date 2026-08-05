@@ -1,0 +1,98 @@
+.section {
+  overflow: hidden;
+  border-block: 1px solid #e5e5e5;
+  background: #fff;
+  padding-block: 6rem;
+}
+
+.header {
+  max-width: 80rem;
+  margin: 0 auto 4rem;
+  padding-inline: 1.5rem;
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0;
+  color: #737373;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.marqueeWrap {
+  position: relative;
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  padding-block: 1rem;
+}
+
+.fadeLeft,
+.fadeRight {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 10;
+  width: 8rem;
+  pointer-events: none;
+}
+
+.fadeLeft {
+  left: 0;
+  background: linear-gradient(to right, #fff, transparent);
+}
+
+.fadeRight {
+  right: 0;
+  background: linear-gradient(to left, #fff, transparent);
+}
+
+.marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 40s linear infinite;
+}
+
+.marqueeWrap:hover .marquee {
+  animation-play-state: paused;
+}
+
+.logoSet {
+  display: flex;
+}
+
+.clientCard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 14rem;
+  height: 6rem;
+  margin-inline: 1rem;
+  border: 1px solid #e5e5e5;
+  border-radius: 1rem;
+  background: #fff;
+  opacity: 0.6;
+  filter: grayscale(100%);
+  cursor: default;
+  transition: all 300ms;
+}
+
+.clientCard:hover {
+  opacity: 1;
+  filter: grayscale(0);
+  border-color: #d4d4d4;
+}
+
+.clientName {
+  color: #171717;
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
